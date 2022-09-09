@@ -7,7 +7,7 @@ import 'package:flutter_ekyc/utils/constant.dart';
 import 'package:flutter_ekyc/widgets/bottom_sheet.dart';
 import 'package:image_picker/image_picker.dart';
 
-abstract class BaseScreen  <T extends StatefulWidget> extends GeneralScreen<T> {
+abstract class VTVEKycScreen  <T extends StatefulWidget> extends GeneralScreen<T> {
   late EKycBloc eKycBloc;
   @override
   void initAll() {

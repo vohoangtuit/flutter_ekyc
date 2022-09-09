@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ekyc/screens/base_screen.dart';
-import 'package:flutter_ekyc/screens/cccd/read_info_cccd.dart';
-import 'package:flutter_ekyc/screens/cmnd/read_info_cmnd.dart';
+import 'package:flutter_ekyc/screens/vtv_ekyc_screen.dart';
+import 'package:flutter_ekyc/screens/cccd/read_info_cccd_screen.dart';
+import 'package:flutter_ekyc/screens/cmnd/read_info_cmnd_screen.dart';
+import 'package:flutter_ekyc/utils/app_string.dart';
 import 'package:flutter_ekyc/widgets/general_widget.dart';
+
+import '../face/face_matching_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,7 +14,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends BaseScreen<HomeScreen> {
+class _HomeScreenState extends VTVEKycScreen<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,11 +27,14 @@ class _HomeScreenState extends BaseScreen<HomeScreen> {
     return Center(
       child: SingleChildScrollView(child: Column(
         children: [
-          viewCustomButton('Đọc thông tin CMND',(){
+          viewCustomButton('${AppString.readInfo} ${AppString.cmnd}',(){
             addScreen(const ReadInfoCMNDScreen());
           }),
-          viewCustomButton('Đọc thông tin CCCD',(){
+          viewCustomButton('${AppString.readInfo} ${AppString.cccd}',(){
             addScreen(const ReadInfoCCCDScreen());
+          }),
+          viewCustomButton(AppString.compareFaceWithCMNDCCCD,(){
+            addScreen(const FaceMatchingScreen());
           })
         ],
 

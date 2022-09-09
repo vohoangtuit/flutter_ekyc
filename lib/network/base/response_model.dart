@@ -11,16 +11,7 @@ class ResponseModel {
   ResponseModel({this.errorCode, this.errorMessage, this.message, this.exception,this.data});
 
   ResponseModel.fromJson(Map<String, dynamic> json) {
-    // if(json['Exception']!=null){
-    //   print('Exception::: ${json['Exception']}');
-    //   exception = json['Exception'];
-    // }
-    // if(exception!=null){
-    //   print('no Exception');
-    //   errorCode ='2022';
-    // }else{
-    //   errorCode = json['errorCode'];
-    // }
+
     errorCode = json['errorCode'];
     errorMessage = json['errorMessage'];
     if(json['errorMessage']!=null){
@@ -31,12 +22,15 @@ class ResponseModel {
     if(json['message']!=null){
       message = json['message'];
     }
-
-    if(errorCode!.compareTo('0')==0){
-      if(json['data']!=null){
+    // if(errorCode!.compareTo('0')==0){
+    //
+    // }
+    if(json['data']!=null){
+      if(Utils.isNotEmpty(json['response'].toString())??true){
         data = json['data'];
       }
     }
+
 
     //print('errorCode::: $errorCode');
   }

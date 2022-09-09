@@ -11,9 +11,3 @@ todo update file pub
 > cd ios
 > pod update || pod install // todo if error run:  'pod deintegrate' before
 
-Document: https://docs.computervision.com.vn/
-Website: https://computervision.com.vn/try-now?id=1
-
-Call api trên demo thì anh chuyển cloud thành demo là được:
-https://cloud.computervision.com.vn/api/v2/ocr/card
---> chuyển thành https://demo.computervision.com.vn/api/v2/ocr/card

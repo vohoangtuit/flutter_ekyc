@@ -1,35 +1,35 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ekyc/models/data_card_model.dart';
-import 'package:flutter_ekyc/screens/base_screen.dart';
+import 'package:flutter_ekyc/models/chip_back_model.dart';
+import 'package:flutter_ekyc/models/chip_front_model.dart';
+import 'package:flutter_ekyc/models/data_chip_model.dart';
+import 'package:flutter_ekyc/screens/vtv_ekyc_screen.dart';
+import 'package:flutter_ekyc/utils/app_string.dart';
 import 'package:flutter_ekyc/utils/constant.dart';
 import 'package:flutter_ekyc/utils/validators.dart';
 import 'package:flutter_ekyc/widgets/general_widget.dart';
 
-import '../../models/card_back_model.dart';
-import '../../models/card_front_model.dart';
-
-class ReadInfoCMNDScreen extends StatefulWidget {
-  const ReadInfoCMNDScreen({Key? key}) : super(key: key);
+class ReadInfoCCCDScreen extends StatefulWidget {
+  const ReadInfoCCCDScreen({Key? key}) : super(key: key);
 
   @override
-  State<ReadInfoCMNDScreen> createState() => _ReadInfoCMNDScreenState();
+  State<ReadInfoCCCDScreen> createState() => _ReadInfoCCCDScreenState();
 }
 
-class _ReadInfoCMNDScreenState extends BaseScreen<ReadInfoCMNDScreen> {
+class _ReadInfoCCCDScreenState extends VTVEKycScreen<ReadInfoCCCDScreen> {
   File? imageFront;
   File? imageBack;
   String errorMessage = '';
-  List<DataCardModel> data = <DataCardModel>[];
-  CardFrontModel? infoCardFront;
-  CardBackModel? infoCardBack;
-  bool valid =false;
+  List<DataChipMode> data = <DataChipMode>[];
+  ChipFrontModel? infoChipFront;
+  ChipBackModel? infoChipBack;
 
+  bool valid =false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: baseAppBar(context, 'Xem thông tin CMND'),
+      appBar: baseAppBar(context, 'Xem thông tin CCCD'),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -42,7 +42,6 @@ class _ReadInfoCMNDScreenState extends BaseScreen<ReadInfoCMNDScreen> {
       ),
     );
   }
-
   Widget _viewCard() {
     return Column(
       children: [
@@ -71,10 +70,10 @@ class _ReadInfoCMNDScreenState extends BaseScreen<ReadInfoCMNDScreen> {
         imageFront == null
             ? Container()
             : imageBack == null
-                ? Container()
-                : viewButtonWidth('upload', () {
-                    _verifyID();
-                  })
+            ? Container()
+            : viewButtonWidth('upload', () {
+          _verifyID();
+        })
       ],
     );
   }
@@ -89,15 +88,18 @@ class _ReadInfoCMNDScreenState extends BaseScreen<ReadInfoCMNDScreen> {
           textBoldCenter('Mặt truớc'),
           spaceHeight(5),
           const Divider(height: 1,),
-          infoCardFront!=null?Container(
+          infoChipFront!=null?Container(
             padding: const EdgeInsets.all(5),
             child: Column(
               children: [
-                customRow('ID: ',infoCardFront!.id!),
-                customRow('Họ tên: ',infoCardFront!.name!),
-                customRow('Ngày sinh: ',infoCardFront!.dob!),
-                customRow('Nguyên quán: ',infoCardFront!.hometown!),
-                customRow('Thuờng trú: ',infoCardFront!.address!),
+                customRow('ID: ',infoChipFront!.id!),
+                customRow('Họ tên: ',infoChipFront!.name!),
+                customRow('Ngày sinh: ',infoChipFront!.dob!),
+                customRow('Giới tính: ',infoChipFront!.gender!),
+                customRow('Ngày hết hạn: ',infoChipFront!.due_date!),
+                customRow('Nguyên quán: ',infoChipFront!.hometown!),
+                customRow('Thuờng trú: ',infoChipFront!.address!),
+                customRow('Quốc tịch: ',infoChipFront!.nationality!),
 
               ],
 
@@ -109,16 +111,15 @@ class _ReadInfoCMNDScreenState extends BaseScreen<ReadInfoCMNDScreen> {
           spaceHeight(5),
           const Divider(height: 1,),
           spaceHeight(5),
-          infoCardBack!=null?Container(
+          infoChipBack!=null?Container(
             padding: const EdgeInsets.all(5),
             child: Column(
               children: [
-                customRow('Dân tộc: ',infoCardBack!.ethnicity!),
-                customRow('Tôn giáo: ',infoCardBack!.religious!),
-                customRow('Dấu vết và dị hình: ',infoCardBack!.identification_sign!),
-                customRow('Ngày cấp: ',infoCardBack!.issue_date!),
-                customRow('Nơi cấp: ',infoCardBack!.issued_at!),
-
+                customRow('Đạc điểm nhận dạng: ',infoChipBack!.identification_sign!),
+                customRow('Ngày cấp: ',infoChipBack!.issue_date!),
+                customRow('Nơi cấp: ',infoChipBack!.issued_at!),
+                customRow('Ngày hết hạn: ',infoChipBack!.due_date!),
+                customRow('Quốc gia: ',infoChipBack!.country!),
               ],
 
             ),
@@ -127,28 +128,16 @@ class _ReadInfoCMNDScreenState extends BaseScreen<ReadInfoCMNDScreen> {
       ),
     );
   }
-
   _verifyID() async {
     if (imageFront != null && imageBack != null) {
       setState(() {
         valid =false;
         errorMessage ='';
         data.clear();
-        infoCardFront =null;
-        infoCardBack =null;
+        infoChipFront =null;
+        infoChipBack =null;
       });
-      await eKycBloc.verifyCards(imageFront!, imageBack!, (error) {
-        if (Utils.isNotEmpty(error) ?? true) {
-          setState(() {
-            errorMessage = error;
-          });
-        } else {
-
-          setState(() {
-            errorMessage = '';
-          });
-        }
-      }).then((value) {
+      await eKycBloc.verifyChip(imageFront!, imageBack!, ).then((value) {
         if (value.isNotEmpty) {
           setState(() {
             data = value;
@@ -158,44 +147,45 @@ class _ReadInfoCMNDScreenState extends BaseScreen<ReadInfoCMNDScreen> {
       //
       if (data.isNotEmpty) {
         for (var card in data) {
-          if(card.type!.compareTo(Constants.cardFront)==0){
-            if(card.infoCardFront!=null){
+          if(card.type!.compareTo(Constants.chipFront)==0){
+            if(card.infoChipFront!=null){
               setState(() {
-                infoCardFront =card.infoCardFront!;
+                infoChipFront =card.infoChipFront!;
               });
             }
-          }else if(card.type!.compareTo(Constants.cardBack)==0){
-            if(card.infoCardBack!=null){
+          }else if(card.type!.compareTo(Constants.chipBack)==0){
+            if(card.infoChipBack!=null){
               setState(() {
-                infoCardBack =card.infoCardBack!;
+                infoChipBack =card.infoChipBack!;
               });
             }
           }
         }
+        log('infoChipFront: ${infoChipFront.toString()}');
+        log('-------------------------------------------------------');
+        log('infoChipBack: ${infoChipBack.toString()}');
       }
-      log('infoCardBack: ${infoCardBack.toString()}');
-      log('-------------------------------------------------------');
-      log('infoCardFront: ${infoCardFront.toString()}');
-      if(infoCardFront!=null&&infoCardBack!= null){
+    //---------
+      if(infoChipFront!=null&&infoChipBack!= null){
         setState(() {
           valid =true;
           errorMessage='';
         });
-      }else if(infoCardFront==null && infoCardBack==null){
+      }else if(infoChipFront==null && infoChipBack==null){
         setState(() {
           valid =false;
-          errorMessage='CMND không phù hợp';
+          errorMessage=AppString.cccdNotValid;
         });
-      }else if(infoCardFront==null&& infoCardBack!=null){
+      }else if(infoChipFront==null&& infoChipBack!=null){
         setState(() {
           valid =false;
-          errorMessage='CMND mặt trứơc không phù hợp';
+          errorMessage=AppString.cccdFrontNotValid;
         });
       }
-      else if(infoCardFront!=null&& infoCardBack==null){
+      else if(infoChipFront!=null&& infoChipBack==null){
         setState(() {
           valid =false;
-          errorMessage='CMND mặt sau không phù hợp';
+          errorMessage=AppString.cccdBackNotValid;
         });
       }
 

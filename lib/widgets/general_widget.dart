@@ -33,8 +33,8 @@ Widget viewCustomButton(String title, VoidCallback onTap){
     child: InkWell(
       onTap: onTap,
       child: SizedBox(
-        height: 40,
-        child: Center(child: Text(title,style:  const TextStyle(color: Colors.white,fontSize:17),),),
+        height: 42,
+        child: Center(child: Text(title,style:  const TextStyle(color: Colors.white,fontSize:15),textAlign: TextAlign.center),),
       ),
     ),
   );
@@ -55,25 +55,25 @@ Widget viewButtonWidth(String title, VoidCallback onTap){
 }
 
 Text text(String title){
-  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 14),) ;
+  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 13),) ;
 }
 Text textAlignRight(String title) {
-  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 14),textAlign: TextAlign.right,) ;
+  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 13),textAlign: TextAlign.right,) ;
 }
 Text textGray(String title){
-  return Text(title,style: const TextStyle(color: Color(0xFF757575),fontSize: 14),) ;
+  return Text(title,style: const TextStyle(color: Color(0xFF757575),fontSize: 13),) ;
 }
 Text textError(String title){
   return Text(title,style: const TextStyle(color: Colors.redAccent,fontSize: 13),) ;
 }
 Text textBold(String title){
-  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 14,fontWeight: FontWeight.bold),) ;
+  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 13,fontWeight: FontWeight.bold),) ;
 }
 Text textCenter(String title){
-  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 14,),textAlign: TextAlign.center,) ;
+  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 13,),textAlign: TextAlign.center,) ;
 }
 Text textBoldCenter(String title){
-  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 14,fontWeight: FontWeight.bold),textAlign: TextAlign.center,) ;
+  return Text(title,style: const TextStyle(color: Colors.black87,fontSize: 13,fontWeight: FontWeight.bold),textAlign: TextAlign.center,) ;
 }
 
 SizedBox spaceHeight(double space) {

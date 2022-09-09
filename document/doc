@@ -1,0 +1,70 @@
+
+Document: https://docs.computervision.com.vn/
+Website: https://computervision.com.vn/try-now?id=1
+
+Call api trên demo thì anh chuyển cloud thành demo là được:
+https://cloud.computervision.com.vn/api/v2/ocr/card
+--> chuyển thành https://demo.computervision.com.vn/api/v2/ocr/card
+todo ---------------list functions
+ TODO 1 : OCR
+todo: 1. Trích xuất thông tin hai mặt chứng minh thư thẻ căn cước với đầu vào url ảnh
+todo: 2. Trích xuất thông tin hai mặt chứng minh thư thẻ căn cước với đầu vào file ảnh
+todo: 3. Trích xuất thông tin hai mặt chứng minh thư thẻ căn cước với đầu vào json
+todo: 4. Trích xuất thông tin ảnh có chứa 1 hoặc nhiều mặt của CMT, CCCD, Passport, đầu vào url ảnh
+todo: 5. Trích xuất thông tin từ ảnh có chứa 1 hoặc nhiều mặt của CMT, CCCD, Passport, đầu vào file ảnh hoặc file PDF
+todo: 6. Trích xuất thông tin từ ảnh có chứa 1 hoặc nhiều mặt của CMT, CCCD, Passport, đầu vào json
+todo: 7. Trích xuất thông tin từ 1 loại bất kỳ CMT mặt trước/mặt sau, CCCD mặt trước/mặt sau, Passport, đầu vào url ảnh.
+todo: 8. Trích xuất thông tin từ 1 loại bất kỳ CMT mặt trước/mặt sau, CCCD mặt trước/mặt sau, Passport, đầu vào file ảnh hoặc file PDF
+todo: 9. Trích xuất thông tin từ 1 loại bất kỳ CMT mặt trước/mặt sau, CCCD mặt trước/mặt sau, Passport, đầu vào file json
+todo: 10. Trích xuất thông tin hai mặt đăng ký xe với đầu vào url ảnh
+todo: 11. Trích xuất thông tin hai mặt đăng ký xe với đầu vào file ảnh
+todo: 12. Trích xuất thông tin hai mặt đăng ký xe với đầu json
+todo: 13. Trích xuất thông tin một mặt bất kì của đăng ký xe với đầu vào url ảnh
+todo: 14. Trích xuất thông tin một mặt bất kì của đăng ký xe với đầu vào file ảnh
+todo: 15. Trích xuất thông tin một mặt bất kì của đăng ký xe với đầu vào json
+todo: 16. Trích xuất thông tin đăng kiểm xe với đầu vào url ảnh
+todo: 17. Trích xuất thông tin đăng kiểm xe với đầu vào file ảnh
+todo: 18. Trích xuất thông tin đăng kiểm xe với đầu vào json
+todo: 19. Trích xuất thông tin giấy khai sinh với đầu vào url ảnh
+todo: 20. Trích xuất thông tin giấy khai sinh với đầu vào file ảnh
+todo: 21. Trích xuất thông tin giấy khai sinh với đầu vào json
+todo: 22. Trích xuất thông tin biển số xe với đầu vào url ảnh
+todo: 23. Trích xuất thông tin biển số xe với đầu vào file ảnh
+todo: 24. Trích xuất thông tin biển số xe với đầu vào json
+todo: 25. Trích xuất thông tin văn bản với đầu vào url ảnh hoặc pdf
+todo: 26. Trích xuất thông tin văn bản với đầu vào file ảnh hoặc file pdf
+todo: 27. Trích xuất thông tin văn bản với đầu vào json
+todo: 28. Trích xuất thông tin hóa đơn với đầu vào url ảnh hoặc pdf
+todo: 29. Trích xuất thông tin hóa đơn với đầu vào file ảnh hoặc file pdf
+todo: 30. Trích xuất thông tin hóa đơn với đầu vào json
+todo: 31. Trích xuất thông tin hóa đơn xe với đầu vào url ảnh hoặc pdf
+todo: 32. Trích xuất thông tin hóa đơn xe với đầu vào file ảnh hoặc file pdf
+todo: 33. Trích xuất thông tin hóa đơn xe với đầu vào json
+todo: 34. Trích xuất thông tin dạng bảng với đầu vào url ảnh hoặc pdf
+todo: 35. Trích xuất thông tin dạng bảng với đầu vào file ảnh hoặc file pdf
+todo: 36. Trích xuất thông tin dạng bảng với đầu vào json
+todo: 37. Trích xuất thông tin Giấy chứng nhận đăng ký doanh nghiệp với đầu vào url ảnh hoặc pdf
+todo: 38. Trích xuất thông tin Giấy chứng nhận đăng ký doanh nghiệp với đầu vào file ảnh hoặc file pdf
+todo: 39. Trích xuất thông tin Giấy chứng nhận đăng ký doanh nghiệp với đầu vào json
+todo: 40. Trích xuất thông tin Báo giá xe với đầu vào url ảnh
+todo: 41. Trích xuất thông tin Báo giá xe với đầu vào file ảnh
+todo: 42. Trích xuất thông tin Báo giá xe với đầu vào json
+
+-------------------------------------
+    TODO 2 : Face Matching
+
+todo: 1. So khớp khuôn mặt ảnh trên CMND, CCCD và ảnh chân dung với đầu vào url ảnh
+todo: 2. So khớp khuôn mặt ảnh trên CMND, CCCD và ảnh chân dung với đầu vào file ảnh
+todo: 3. So khớp khuôn mặt ảnh trên CMND, CCCD và ảnh chân dung với đầu vào JSON
+todo: 4. Xác thực khuôn mặt dùng ảnh người dùng cầm CMND/CCCD, đầu vào url ảnh
+todo: 5. Xác thực khuôn mặt dùng ảnh người dùng cầm CMND/CCCD, đầu vào file ảnh
+todo: 6. Xác thực khuôn mặt dùng ảnh người dùng cầm CMT/CMND, đầu vào JSON
+
+-------------------------------------
+    TODO 3 : Liveness Verify
+
+todo: 1. Thực hiện eKYC sử dụng ảnh chụp chân dung người dùng ở 3 góc độ
+
+
+
+

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="vietravel.com.flutter_ekyc">
    <application
-        android:label="ekyc"
+        android:label="VTV EKyc"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
