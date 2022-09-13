@@ -18,6 +18,10 @@ abstract class ApiProvider {
   @MultiPart()
   @POST('ekyc/face_matching')
   Future<ResponseModel> faceMatching(@Query('format_type') String? format_type,@Query('type1') String? type1,@Part(name: 'img1') File img1,@Part(name: 'img2') File img2);
+
+  @MultiPart()
+  @POST('ekyc/verify_liveness')
+  Future<ResponseModel> verifyLiveness(@Query('format_type') String? format_type,@Part(name: 'portrait_left') File portrait_left,@Part(name: 'portrait_mid') File portrait_mid,@Part(name: 'portrait_right') File portrait_right);
 }
 
 

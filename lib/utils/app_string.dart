@@ -11,6 +11,8 @@ class AppString{
   static String readInfo ="Đọc thông tin";
   static String compareFaceWithCMNDCCCD ="So sánh khuôn mặt với $cmnd,$cccd";
 
+  static String verifyLiveness ="Ảnh người dùng 3 góc độ";
+
   static String cmndNotValid ="$cmnd $notValid";
   static String cmndFrontNotValid ="$cmnd $front $notValid";
   static String cmndBackNotValid ="$cmnd $back $notValid";

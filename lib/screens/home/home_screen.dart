@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ekyc/screens/face/liveness_verify_screen.dart';
 import 'package:flutter_ekyc/screens/vtv_ekyc_screen.dart';
 import 'package:flutter_ekyc/screens/cccd/read_info_cccd_screen.dart';
 import 'package:flutter_ekyc/screens/cmnd/read_info_cmnd_screen.dart';
@@ -35,6 +36,9 @@ class _HomeScreenState extends VTVEKycScreen<HomeScreen> {
           }),
           viewCustomButton(AppString.compareFaceWithCMNDCCCD,(){
             addScreen(const FaceMatchingScreen());
+          }),
+          viewCustomButton(AppString.verifyLiveness,(){
+            addScreen(const LivenessVerifyScreen());
           })
         ],
 

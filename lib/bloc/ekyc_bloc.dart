@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ekyc/bloc/base_bloc.dart';
+import 'package:flutter_ekyc/models/lveness_verify_model.dart';
 import 'package:flutter_ekyc/models/data_card_model.dart';
 import 'package:flutter_ekyc/models/data_chip_model.dart';
 import 'package:flutter_ekyc/models/face_matching_model.dart';
@@ -57,6 +58,24 @@ class EKycBloc extends BaseBloc {
       await restApi.faceMatching('file', 'card', img1, img2).then((response) {// todo 'card' || 'portrait'
         if(response.data!=null){
           data =FaceMatchingModel.fromJson(response.data);
+        }
+
+      });
+    } on DioError catch (dioError) {
+      screen.showLoading(false);
+      print('Error:: ${DioExceptions.fromDioError(dioError).toString()}');
+    }
+    screen.showLoading(false);
+    screen.log('data ${data.toString()}');
+    return data;
+  }
+  Future<LivenessVerifyModel> verifyLiveness(File portrait_left, File portrait_mid, File portrait_right) async {
+    LivenessVerifyModel data =LivenessVerifyModel();
+    screen.showLoading(true);
+    try {
+      await restApi.verifyLiveness('file', portrait_left, portrait_mid,portrait_right).then((response) {// todo 'card' || 'portrait'
+        if(response.data!=null){
+          data =LivenessVerifyModel.fromJson(response.data);
         }
 
       });
